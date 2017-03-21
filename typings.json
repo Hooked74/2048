@@ -1,0 +1,21 @@
+{
+  "name": "2048",
+  "dependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160723033700",
+    "core-decorators": "registry:dt/core-decorators#0.10.0+20170223151516",
+    "deep-equal": "registry:dt/deep-equal#1.0.0+20170307111145",
+    "enzyme": "registry:npm/enzyme#2.2.0+20160322031343",
+    "react": "registry:dt/react#15.0.0+20170320235709",
+    "react-dom": "registry:dt/react-dom#0.14.0+20170207010524",
+    "react-redux": "registry:dt/react-redux#4.4.0+20170214201550",
+    "redux-devtools": "registry:dt/redux-devtools#3.0.0+20170123203653",
+    "redux-devtools-dock-monitor": "registry:dt/redux-devtools-dock-monitor#1.1.1+20170123203653",
+    "redux-devtools-log-monitor": "registry:dt/redux-devtools-log-monitor#1.0.11+20170123203653",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20170125003538"
+  },
+  "globalDependencies": {
+    "jest": "registry:dt/jest#19.2.0+20170312200138",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "Game 2048",
+  "main": "src/app/index.ts",
+  "scripts": {
+    "setup": "npm install && node_modules/typings/dist/bin.js install",
+    "clear": "rm -rf build",
+    "deploy": "npm run clear && npm run setup && webpack --progress",
+    "deploy:prod": "NODE_ENV=prod npm run deploy",
+    "server": "webpack-dev-server --inline --hot --progress",
+    "server:prod": "NODE_ENV=prod webpack-dev-server",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hooked74/2048.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hooked74/2048/issues"
+  },
+  "homepage": "https://github.com/Hooked74/2048#readme",
+  "devDependencies": {
+    "@angular/compiler": "^2.1.0",
+    "@angular/core": "^2.1.0",
+    "autoprefixer-loader": "^3.2.0",
+    "awesome-typescript-loader": "^2.2.4",
+    "chai": "^3.5.0",
+    "clean-webpack-plugin": "^0.1.13",
+    "codelyzer": "^1.0.0-beta.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.25.0",
+    "enzyme": "^2.7.1",
+    "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "istanbul-instrumenter-loader": "^1.0.0",
+    "jest": "^18.1.0",
+    "nock": "^9.0.2",
+    "node-sass": "^4.2.0",
+    "phantomjs-prebuilt": "^2.1.14",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
+    "redux-mock-store": "^1.2.1",
+    "resolve-url-loader": "^1.6.0",
+    "rxjs": "^5.0.0-rc.1",
+    "sass": "^0.5.0",
+    "sass-loader": "^4.0.2",
+    "source-map": "^0.5.6",
+    "source-map-support": "^0.4.3",
+    "string-replace-loader": "^1.0.5",
+    "style-loader": "^0.13.1",
+    "ts-jest": "^19.0.2",
+    "ts-loader": "^2.0.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
+    "typings": "^2.1.0",
+    "uglify-js": "^2.7.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-strip": "^0.1.0",
+    "zone.js": "^0.6.25"
+  },
+  "dependencies": {
+    "core-decorators": "^0.14.0",
+    "core-js": "^2.4.1",
+    "deep-equal": "^1.0.1",
+    "deep-extend": "^0.4.1",
+    "normalize-scss": "^6.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.2.0",
+    "susy": "^2.2.12"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    },
+    "globals": {
+      "__DEV__": true
+    },
+    "notify": true,
+    "verbose": true,
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  }
+}

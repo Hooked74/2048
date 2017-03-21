@@ -1,0 +1,58 @@
+*:focus {
+    outline: none !important;
+}
+
+*, .noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+a, a *, .icon, button, button *, .fa, [class*=icon] {
+    cursor: pointer;
+}
+
+.left-page *, 
+.right-page *,
+input, 
+textarea {
+    -webkit-touch-callout: initial !important;
+    -webkit-user-select: text !important;
+    -khtml-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    cursor: auto;    
+}
+
+input::-ms-clear {
+   display: none;
+}
+
+
+html  {
+    font-family: $primaryFonts;
+    -webkit-text-size-adjust: none;  
+}
+
+body {
+    background: #4e4e4e;
+    overflow: hidden;
+    text-rendering: optimizeLegibility;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
