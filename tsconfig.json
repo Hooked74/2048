@@ -9,7 +9,8 @@
         "removeComments": false,
         "noEmitHelpers": false,
         "sourceMap": false,
-        "jsx": "react"
+        "jsx": "react",
+        "types": ["react", "react-dom"]
     },
     "exclude": [
         "node_modules"

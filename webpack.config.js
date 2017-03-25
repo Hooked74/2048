@@ -93,7 +93,7 @@ module.exports = {
     devServer: {
         host: host,
         port: port,
-        contentBase: __dirname + "build",
+        contentBase: __dirname + "/build",
         hot: true
     }
 };
