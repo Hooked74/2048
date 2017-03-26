@@ -111,6 +111,9 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+
+    "testPathIgnorePatterns": ["/node_modules/", ".mock"],
+    "coveragePathIgnorePatterns": ["/node_modules/", ".mock"],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
