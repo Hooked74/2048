@@ -1,4 +1,5 @@
 import configureMockStore from 'redux-mock-store';
+import { expect } from 'chai';
 import { promises } from '../promises';
 import { PROMISE } from '../../constants';
 import { IActionPromise, IActionSuccess, IActionError, IAction } from '../../interfaces';
@@ -18,11 +19,11 @@ describe('PROMISES MIDDLEWARE', () => {
             promiseTypes: [START_PROMISE, SUCCESS_PROMISE, FAILURE_PROMISE],
             promise: Promise.resolve({ test: 'test' })
         };
-        expect(store.dispatch(action)).toEqual(action);
+        expect(store.dispatch(action)).to.deep.equal(action);
 
         const actions:Array<IActionPromise> = store.getActions();
-        expect(actions.length).toBe(1);
-        expect(actions[0]).toEqual(action);
+        expect(actions.length).to.be.equal(1);
+        expect(actions[0]).to.deep.equal(action);
     });
 
     it('Должен выполниться action success и вернуть результаты промиса', () => {
@@ -38,7 +39,7 @@ describe('PROMISES MIDDLEWARE', () => {
                 { type: START_PROMISE },
                 { type: SUCCESS_PROMISE, payload: data } 
             ];
-            expect(store.getActions()).toEqual(resultActions);
+            expect(store.getActions()).to.deep.equal(resultActions);
         });
     });
 
@@ -55,7 +56,7 @@ describe('PROMISES MIDDLEWARE', () => {
                 { type: START_PROMISE },
                 { type: FAILURE_PROMISE, error: data } 
             ];
-            expect(store.getActions()).toEqual(resultActions);
+            expect(store.getActions()).to.deep.equal(resultActions);
         });      
     });
 });

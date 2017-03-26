@@ -18,7 +18,7 @@ export const promises:Redux.Middleware = store => next => action => {
         })
         .catch((error:Error) => {
             const promiseErrorAction:IActionError = {
-                type: successType,
+                type: failureType,
                 error  
             };
             return store.dispatch(promiseErrorAction);
