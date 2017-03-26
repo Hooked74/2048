@@ -13,3 +13,7 @@ export interface ITilePosition {
     column:number;
     row:number;
 }
+
+export interface ITileRenewable extends ITilePosition {
+    value:number;
+}
