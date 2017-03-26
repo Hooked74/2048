@@ -14,7 +14,7 @@ import {
 describe('GAME REDUCERS', () => {
     const gameInitialState:IGameState = { status: GAME_PENDING };
     it('Должен вернуть начальное состояние', () => {
-        expect(reducers.game(undefined, {})).to.deep.equal(gameInitialState);
+        expect(reducers.game(undefined, { type: null })).to.deep.equal(gameInitialState);
     });
 
     it('Должен обработать START_GAME', () => {

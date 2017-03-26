@@ -13,7 +13,7 @@ import {
 
 type TAction = IActionSuccess & IActionError;
 const tilesInitialState:ITileCollection = null;
-export const tileCollection:Function = (state:ITileCollection = tilesInitialState, action:TAction):ITileCollection => {
+export const tileCollection:Redux.Reducer<any> = (state:ITileCollection = tilesInitialState, action:TAction):ITileCollection => {
     switch (action.type) {
     case UPDATE_TILES:
         if (!Array.isArray(action.payload)) {

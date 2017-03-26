@@ -17,7 +17,7 @@ interface IState {
 const mapStateToProps = (state:IConnectedProps):IConnectedProps => state;
 
 class AppContainer extends Component<IConnectedProps & IConnectedDispatchProps, IState> {
-    render() {
+    public render() {
         return (
             <div id="app">
                 <Board />

@@ -6,12 +6,12 @@ import {
 } from '../../constants';
 import {
     IScoresState​​
-} from '../interfaces';
+} from '../../interfaces';
 
 describe('SCORES REDUCERS', () => {
     const scoresInitialState:IScoresState​​ = { value: 0 };
     it('Должен вернуть начальное состояние', () => {
-        expect(reducers.scores(undefined, {})).to.deep.equal(scoresInitialState);
+        expect(reducers.scores(undefined, { type: null })).to.deep.equal(scoresInitialState);
     });
 
     it('Должен обработать ADD_SCORES', () => {

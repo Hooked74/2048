@@ -13,7 +13,7 @@ import {
 
 type TAction = IActionSuccess & IActionError;
 const gameInitialState:IGameState = { status: GAME_PENDING };
-export const game:Function = (state:IGameState = gameInitialState, action:TAction):IGameState => {
+export const game:Redux.Reducer<any> = (state:IGameState = gameInitialState, action:TAction):IGameState => {
     switch (action.type) {
     case START_GAME:
         return { status: GAME_STARTED };

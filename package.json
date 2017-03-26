@@ -6,12 +6,12 @@
   "scripts": {
     "setup": "npm install && node_modules/typings/dist/bin.js install",
     "clear": "rm -rf build",
-    "deploy": "npm run clear && npm run setup && webpack --progress",
+    "deploy": "npm run clear && npm run setup && node_modules/webpack/bin/webpack.js --progress",
     "deploy:prod": "NODE_ENV=prod npm run deploy",
-    "server": "webpack-dev-server --inline --hot --progress",
-    "server:prod": "NODE_ENV=prod webpack-dev-server",
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+    "server": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --progress",
+    "server:prod": "NODE_ENV=prod node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test": "node_modules/jest/bin/jest.js",
+    "test:watch": "node_modules/jest/bin/jest.js --watchAll"
   },
   "repository": {
     "type": "git",

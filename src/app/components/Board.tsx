@@ -5,7 +5,7 @@ interface IProps {}
 interface IState {}
 
 export default class BoardComponent extends Component<IProps, IState> {
-    render() {
+    public render() {
         return <div id="board"></div>;
     }
 }

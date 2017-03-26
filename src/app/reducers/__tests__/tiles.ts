@@ -12,7 +12,7 @@ import {
 describe('TILES REDUCERS', () => {
     const tilesInitialState:ITileCollection = null;
     it('Должен вернуть начальное состояние', () => {
-        expect(reducers.tileCollection(undefined, {})).to.deep.equal(tilesInitialState);
+        expect(reducers.tileCollection(undefined, { type: null })).to.deep.equal(tilesInitialState);
     });
 
     it('Должен обработать UPDATE_TILES', () => {
