@@ -16,7 +16,7 @@ const mockStore = configureMockStore(middlewares);
 
 describe('GAME ACTIONS', () => {
     it('Должен создать action, который начинает новую игру', () => {
-        const store = mockStore({ tileCollections: mock });
+        const store = mockStore({ tileCollection: mock });
         return store.dispatch(gameActions.startNewGame())
             .then(() => {
                 const actions = store.getActions();
@@ -27,8 +27,8 @@ describe('GAME ACTIONS', () => {
                 expect(actions[2]).to.have.ownProperty('payload');
                 expect(actions[3].type).to.be.equal(CREATE_NEW_TILE);
                 expect(actions[4].type).to.be.equal(CREATE_NEW_TILE);
-                expect(actions[3].payload).to.have.all.keys(['column', 'row', 'value']);;
-                expect(actions[4].payload).to.have.all.keys(['column', 'row', 'value']);;
+                expect(actions[3].payload).to.have.all.keys(['column', 'row', 'value']);
+                expect(actions[4].payload).to.have.all.keys(['column', 'row', 'value']);
             }); 
     });
 

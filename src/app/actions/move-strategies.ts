@@ -50,7 +50,7 @@ const moveStrategies = {
             }));
             newTC.push(row);
         }
-        return { tileCollections: newTC, scores };
+        return { tileCollection: newTC, scores };
     },
     moveTilesToRight(tc:ITileCollection) { // Двигаем плитки слева направо
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
@@ -96,7 +96,7 @@ const moveStrategies = {
             }));
             newTC.push(row);
         }
-        return { tileCollections: newTC, scores };
+        return { tileCollection: newTC, scores };
     },
     moveTilesToTop(tc:ITileCollection) { // Двигаем плитки снизу вверх
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
@@ -145,7 +145,7 @@ const moveStrategies = {
                 };
             });
         }
-        return { tileCollections: newTC, scores };
+        return { tileCollection: newTC, scores };
     },
     moveTilesToBottom(tc:ITileCollection) { // Двигаем плитки сверху вниз
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
@@ -193,7 +193,7 @@ const moveStrategies = {
                 };
             });
         }
-        return { tileCollections: newTC, scores };
+        return { tileCollection: newTC, scores };
     }
 };
 
