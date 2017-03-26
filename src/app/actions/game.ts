@@ -17,9 +17,10 @@ export const startNewGame:Function = () => (dispatch:Redux.Dispatch<IActionSucce
     return Promise.all([
         dispatch({
             type: START_GAME
-        }),
-        dispatch(clearScores()),
-        dispatch(resetTiles()),
+        }), // стартуем игру
+        dispatch(clearScores()), // очищаем очки
+        dispatch(resetTiles()), // обнуляем плитки
+        // добавляем две плитки
         dispatch(createNewTile()),
         dispatch(createNewTile())
     ]);
