@@ -38,19 +38,19 @@ describe('TILES ACTIONS', () => {
         }
     });
     it('Должен создать action, который перемещает все плитки', () => {
-        const store = mockStore({ tileCollection: mock.movingMock });
+        const store = mockStore({ tileCollection: mock.tileCollectionMoving });
         return store.dispatch(tilesActions.moveTiles("right"))
             .then(() => {
                 const actions = store.getActions();
                 expect(actions).to.have.lengthOf(3);
-                expect(actions[0]).to.deep.equal({type: UPDATE_TILES, payload: mock.movingResult});
+                expect(actions[0]).to.deep.equal({type: UPDATE_TILES, payload: mock.tileCollectionMovingResult});
                 expect(actions[1]).to.deep.equal({type: ADD_SCORES, payload: mock.movingScores});
                 expect(actions[2].type).to.be.equal(CREATE_NEW_TILE);
                 expect(actions[2].payload).to.have.all.keys(['column', 'row', 'value']);
             });
     });
     it('Должен создать action, который создаст новую плитку в случайном месте', () => {
-        const store = mockStore({ tileCollection: mock.movingMock });
+        const store = mockStore({ tileCollection: mock.tileCollectionMoving });
         return store.dispatch(tilesActions.createNewTile())
             .then(() => {
                 const actions = store.getActions();
@@ -60,7 +60,7 @@ describe('TILES ACTIONS', () => {
             });
     });
     it('Должен создать action, который создаст новую плитку, но не закончит игру, так как есть возможность хода', () => {
-        const store = mockStore({ tileCollection: mock.createdNotFinishedMock });
+        const store = mockStore({ tileCollection: mock.tileCollectionCreatedNotFinished });
         return store.dispatch(tilesActions.createNewTile())
             .then(() => {
                 const actions = store.getActions();
@@ -70,7 +70,7 @@ describe('TILES ACTIONS', () => {
             });
     });
     it('Должен создать action, который попытается создать новую плитку, но не создаст и закончит игру', () => {
-        const store = mockStore({ tileCollection: mock.finishedNotCreatedMock });
+        const store = mockStore({ tileCollection: mock.tileCollectionFinishedNotCreated });
         return store.dispatch(tilesActions.createNewTile())
             .then(() => {
                 const actions = store.getActions();
@@ -79,7 +79,7 @@ describe('TILES ACTIONS', () => {
             });
     });
     it('Должен создать action, который создаст новую плитку в случайном месте и закончит игру', () => {
-        const store = mockStore({ tileCollection: mock.createdAndFinishedMock });
+        const store = mockStore({ tileCollection: mock.tileCollectionCreatedAndFinished });
         return store.dispatch(tilesActions.createNewTile())
             .then(() => {
                 const actions = store.getActions();

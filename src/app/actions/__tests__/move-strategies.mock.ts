@@ -1,6 +1,6 @@
 import { ITileCollection } from '../../interfaces';
 
-export const toLeftMock:ITileCollection = [
+export const tileCollectionToLeft:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "2", value: 2}, 
@@ -28,7 +28,7 @@ export const toLeftMock:ITileCollection = [
 ];
 
 export const toLeftScores:number = 52;
-export const toLeftResult:ITileCollection = [
+export const tileCollectionToLeftResult:ITileCollection = [
     [
         { top: 0, left: 0, id: "2", value: 4}, 
         { top: 0, left: 10, id: "4", value: 0}, 
@@ -56,7 +56,7 @@ export const toLeftResult:ITileCollection = [
 ];
 
 
-export const toRightMock:ITileCollection = [
+export const tileCollectionToRight:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "2", value: 2}, 
@@ -84,7 +84,7 @@ export const toRightMock:ITileCollection = [
 ];
 
 export const toRightScores:number = 68;
-export const toRightResult:ITileCollection = [
+export const tileCollectionToRightResult:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "3", value: 0}, 
@@ -112,7 +112,7 @@ export const toRightResult:ITileCollection = [
 ];
 
 
-export const toTopMock:ITileCollection = [
+export const tileCollectionToTop:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "2", value: 8}, 
@@ -140,7 +140,7 @@ export const toTopMock:ITileCollection = [
 ];
 
 export const toTopScores:number = 68;
-export const toTopResult:ITileCollection = [
+export const tileCollectionToTopResult:ITileCollection = [
     [
         { top: 0, left: 0, id: "5", value: 4}, 
         { top: 0, left: 10, id: "2", value: 16}, 
@@ -168,7 +168,7 @@ export const toTopResult:ITileCollection = [
 ];
 
 
-export const toBottomMock:ITileCollection = [
+export const tileCollectionToBottom:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "2", value: 8}, 
@@ -196,7 +196,7 @@ export const toBottomMock:ITileCollection = [
 ];
 
 export const toBottomScores:number = 60;
-export const toBottomResult:ITileCollection = [
+export const tileCollectionToBottomResult:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "14", value: 0}, 

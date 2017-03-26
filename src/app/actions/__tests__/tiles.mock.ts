@@ -1,6 +1,6 @@
 import { ITileCollection } from '../../interfaces';
 
-export const movingMock:ITileCollection = [
+export const tileCollectionMoving:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "2", value: 2}, 
@@ -28,7 +28,7 @@ export const movingMock:ITileCollection = [
 ];
 
 export const movingScores:number = 68;
-export const movingResult:ITileCollection = [
+export const tileCollectionMovingResult:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 0}, 
         { top: 0, left: 10, id: "3", value: 0}, 
@@ -55,7 +55,7 @@ export const movingResult:ITileCollection = [
     ]
 ];
 
-export const createdNotFinishedMock:ITileCollection = [
+export const tileCollectionCreatedNotFinished:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 2}, 
         { top: 0, left: 10, id: "2", value: 2}, 
@@ -82,7 +82,7 @@ export const createdNotFinishedMock:ITileCollection = [
     ]
 ];
 
-export const finishedNotCreatedMock:ITileCollection = [
+export const tileCollectionFinishedNotCreated:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 4}, 
         { top: 0, left: 10, id: "2", value: 2}, 
@@ -109,7 +109,7 @@ export const finishedNotCreatedMock:ITileCollection = [
     ]
 ];
 
-export const createdAndFinishedMock:ITileCollection = [
+export const tileCollectionCreatedAndFinished:ITileCollection = [
     [
         { top: 0, left: 0, id: "1", value: 4}, 
         { top: 0, left: 10, id: "2", value: 2}, 
