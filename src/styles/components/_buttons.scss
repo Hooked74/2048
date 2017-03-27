@@ -1,0 +1,22 @@
+.btn-game {
+    font-family: $primaryFonts;
+    border: none;
+    background-color: $buttonsBackgroundColor;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: $buttonsColor;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        background-color: lighten($buttonsBackgroundColor, 5%);    
+    }
+
+    &:active {
+        background-color: darken($buttonsBackgroundColor, 5%);    
+    }
+}

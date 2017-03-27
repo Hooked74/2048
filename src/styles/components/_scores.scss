@@ -1,0 +1,19 @@
+.scoresheet {
+    display: inline-block;
+    background-color: $scoresBackgroundColor;
+    padding: 15px;
+    font-size: $scoresFontSize;
+    line-height: 1;
+    font-weight: bold;
+    border-radius: 3px;
+    color: $scoresColor;
+    text-align: center;
+    
+    span {
+        text-transform: uppercase;
+        font-size: $scoresLabelFontSize;
+        text-align: center;
+        color: $scoresLabelColor;
+        display: block;
+    }
+}

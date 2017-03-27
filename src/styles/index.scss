@@ -11,4 +11,12 @@
 @import "base/keyframes";
 @import "base/common";
 
+//----LAYOUT----
+@import "layout/main";
+@import "layout/header";
+
 //----COMPONENTS----
+@import "components/game";
+@import "components/board";
+@import "components/buttons";
+@import "components/scores";

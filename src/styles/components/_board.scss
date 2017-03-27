@@ -1,0 +1,17 @@
+#board {
+    margin-top: 2em;
+    border-radius: 6px;
+    border-color: $boardBackgroundColor !important;
+    background-color: $boardBackgroundColor;
+    position: relative;
+
+    .row {
+        line-height: 0;
+    }
+
+    .cell {
+        border-radius: 3px;
+        background-color: $boardCellColor;
+        display: inline-block;
+    }
+}

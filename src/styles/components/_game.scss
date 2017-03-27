@@ -1,0 +1,18 @@
+#game {
+    display: flex;
+    justify-content: center;
+
+    &Wrapper {
+        display: inline-block;
+    }
+
+    &Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &Scores > * + * {
+        margin-left: 10px;
+    }
+}
