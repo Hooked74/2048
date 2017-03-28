@@ -15,14 +15,14 @@ import {
 
 export const startNewGame:Function = () => (dispatch:Redux.Dispatch<IActionSuccess>):Promise<any> => {
     return Promise.all([
-        dispatch({
-            type: START_GAME
-        }), // стартуем игру
         dispatch(clearScores()), // очищаем очки
         dispatch(resetTiles()), // обнуляем плитки
         // добавляем две плитки
         dispatch(createNewTile()),
-        dispatch(createNewTile())
+        dispatch(createNewTile()),
+        dispatch({
+            type: START_GAME
+        }) // стартуем игру
     ]);
 };
 

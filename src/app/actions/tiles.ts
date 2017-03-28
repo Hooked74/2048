@@ -138,8 +138,7 @@ export const moveTiles:Function = (direction:TBoardDirection) => (dispatch:Redux
                 type: UPDATE_TILES,
                 payload: tileCollection
             }),
-            dispatch(addScores(scores)), // добавляем очки
-            dispatch(createNewTile()) // создаем новую плитку
+            dispatch(addScores(scores)) // добавляем очки
         ]);
     } else {
         return Promise.resolve();
