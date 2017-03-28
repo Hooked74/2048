@@ -18,8 +18,8 @@ interface IStyle {
 }
 
 export default class RowComponent extends Component<IProps, IState> {
-    get cells():Array<React.ReactElement<any>> {
-        const cells:Array<React.ReactElement<any>> = [];
+    get cells():Array<React.ReactElement<Cell>> {
+        const cells:Array<React.ReactElement<Cell>> = [];
         for (let i = 0; i < BOARD_SIDE_LENGTH; i++) {
             cells.push(<Cell indent={BOARD_SIDE_LENGTH !== i + 1} key={i} />);
         }
