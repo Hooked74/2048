@@ -21,8 +21,8 @@ interface IConnectedProps {
 }
 interface IConnectedDispatchProps {
     startNewGame:Function;
+    pendingGame:Function;
     moveTiles:Function;  
-    createNewTile:Function; 
 }
 interface IConnectedOwnProps {}
 
@@ -43,7 +43,7 @@ class AppContainer extends Component<IConnectedProps & IConnectedDispatchProps, 
                     scores={this.props.scores}
                     tileCollection={this.props.tileCollection}
                     startNewGame={this.props.startNewGame}
-                    createNewTile={this.props.createNewTile}
+                    pendingGame={this.props.pendingGame}
                     moveTiles={this.props.moveTiles}/>
             </div>
         );

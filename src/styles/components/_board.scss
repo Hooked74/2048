@@ -28,8 +28,8 @@
         transition-property: top, left, background-color, box-shadow;
         transition-timing-function: ease-in-out; 
         
-        @include accelerate(top);
-        will-change: top, left;
+        // @include accelerate(top);
+        // will-change: top, left;
 
         &:not(.tile0) {
             animation-name: zoomIn;

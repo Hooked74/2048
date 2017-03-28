@@ -12,8 +12,8 @@ const configureStore:Function = preloadedState => {
         reducer,
         preloadedState,
         compose(
-            applyMiddleware(thunk, promises, createLogger()),
-            DevTools.instrument()
+            applyMiddleware(thunk, promises)//, createLogger()),
+            //DevTools.instrument()
         )
     );
 

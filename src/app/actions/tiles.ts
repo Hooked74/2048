@@ -7,7 +7,10 @@ import {
     TILE_SECOND_VALUE,
     TILE_FACTOR,
     UPDATE_TILES,
-    CREATE_NEW_TILE
+    CREATE_NEW_TILE,
+    YOU_LOOSE,
+    TILE_TRANSITION_DURATION,
+    YOU_WIN
 } from '../constants';
 import {
     ITile,
@@ -17,9 +20,10 @@ import {
     IActionSuccess
 } from '../interfaces';
 import moveStrategies from './move-strategies';
-import { capitalize, generateUUID } from '../utils';
+import { capitalize, generateUUID, sleep } from '../utils';
 import { finishGame } from './game';
 import { addScores } from './scores';
+import * as equal from "deep-equal";
 
 /**
  * Создает коллекцию с пустыми плитками
@@ -111,12 +115,12 @@ export const createNewTile:Function = () => (dispatch:Redux.Dispatch<IActionSucc
             // проверяем эквивалентность значений со вставленной текущей плиткой
             isContinueGame = equalAdjacentValues(randomTileValue, randomEmptyCell.row, randomEmptyCell.column);
             // если мы опять не нашли эквивалентных значений завершаем игру
-            if (!isContinueGame) return Promise.all([createNewTileDispatch, dispatch(finishGame())]);
+            if (!isContinueGame) return Promise.all([createNewTileDispatch, dispatch(finishGame(YOU_LOOSE))]);
         }
         return Promise.resolve(createNewTileDispatch);
     } else {
         // заканчиваем игру если нет пустых плиток
-        return Promise.resolve(dispatch(finishGame()));
+        return Promise.resolve(dispatch(finishGame(YOU_LOOSE)));
     }
 }
 
@@ -130,17 +134,29 @@ export const moveTiles:Function = (direction:TBoardDirection) => (dispatch:Redux
     // выбираем стратегию перемещения плиток
     const moveStrategy:Function = moveStrategies[`moveTilesTo${capitalize(direction)}`];
     if (moveStrategy) {
+        const beforeTileCollection:ITileCollection = getStore().tileCollection;
         // получаем новую коллекцию плиток и очки полученные за перемещение
-        const { tileCollection, scores } = moveStrategy(getStore().tileCollection);
-        return Promise.all([
-            // обновляем коллекцию
-            dispatch({
-                type: UPDATE_TILES,
-                payload: tileCollection
-            }),
-            dispatch(addScores(scores)) // добавляем очки
-        ]);
-    } else {
-        return Promise.resolve();
+        const { tileCollection, scores, isWinGame } = moveStrategy(beforeTileCollection);
+        const isTilesEqual = equal(beforeTileCollection, tileCollection);
+
+        if (!isTilesEqual) {
+            const updatePromise:Promise<any> = Promise.all([
+                // обновляем коллекцию
+                dispatch({
+                    type: UPDATE_TILES,
+                    payload: tileCollection
+                }),
+                dispatch(addScores(scores)) // добавляем очки
+            ]);
+            if (isWinGame) {
+                return updatePromise
+                    .then(() => dispatch(finishGame(YOU_WIN)));
+            } else {
+                return updatePromise
+                    .then(() => sleep(TILE_TRANSITION_DURATION + 100))
+                    .then(() => dispatch(createNewTile()));
+            }
+        }
     }
+    return Promise.resolve();
 }

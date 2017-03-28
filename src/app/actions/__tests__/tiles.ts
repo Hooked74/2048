@@ -14,7 +14,8 @@ import {
     UPDATE_TILES,
     CREATE_NEW_TILE,
     ADD_SCORES,
-    FINISH_GAME
+    FINISH_GAME,
+    YOU_LOOSE
 } from '../../constants';
 import {
     ITileCollection,
@@ -42,9 +43,11 @@ describe('TILES ACTIONS', () => {
         return store.dispatch(tilesActions.moveTiles("right"))
             .then(() => {
                 const actions = store.getActions();
-                expect(actions).to.have.lengthOf(2);
+                expect(actions).to.have.lengthOf(3);
                 expect(actions[0]).to.deep.equal({type: UPDATE_TILES, payload: mock.tileCollectionMovingResult});
                 expect(actions[1]).to.deep.equal({type: ADD_SCORES, payload: mock.movingScores});
+                expect(actions[2].type).to.be.equal(CREATE_NEW_TILE);
+                expect(actions[2].payload).to.have.all.keys(['column', 'row', 'value']);
             });
     });
     it('Должен создать action, который создаст новую плитку в случайном месте', () => {
@@ -73,7 +76,7 @@ describe('TILES ACTIONS', () => {
             .then(() => {
                 const actions = store.getActions();
                 expect(actions).to.have.lengthOf(1);
-                expect(actions[0]).to.deep.equal({type: FINISH_GAME});
+                expect(actions[0]).to.deep.equal({type: FINISH_GAME, payload: YOU_LOOSE});
             });
     });
     it('Должен создать action, который создаст новую плитку в случайном месте и закончит игру', () => {
@@ -84,7 +87,7 @@ describe('TILES ACTIONS', () => {
                 expect(actions).to.have.lengthOf(2);
                 expect(actions[0].type).to.be.equal(CREATE_NEW_TILE);
                 expect(actions[0].payload).to.have.all.keys(['column', 'row', 'value']);
-                expect(actions[1]).to.deep.equal({type: FINISH_GAME});
+                expect(actions[1]).to.deep.equal({type: FINISH_GAME, payload: YOU_LOOSE});
             });
     });
 });

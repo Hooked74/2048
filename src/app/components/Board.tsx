@@ -3,18 +3,22 @@ import { Component } from 'react';
 
 import {
     BOARD_SIDE_LENGTH,
-    BOARD_CELL_GAP
+    BOARD_CELL_GAP,
+    GAME_PENDING
 } from '../constants';
 
 import {
     ITileCollection,
-    ITile
+    ITile,
+    IGameState
 } from '../interfaces';
 
 import Row from './Row';
 import Tile from './Tile';
+import EndGameOverlay from './EndGameOverlay';
 
 interface IProps {
+    game:IGameState;
     tileCollection:ITileCollection;
     startNewGame:Function;
 }
@@ -26,8 +30,7 @@ interface IStyle {
 
 export default class BoardComponent extends Component<IProps, IState> {
     private tilesElements:Array<React.ReactElement<Tile>> = []; 
-    private tilesComponents:any = []; 
-    private tilesElementsHashMap = {};
+    private tilesComponents:Array<any> = []; 
 
     get rows():Array<React.ReactElement<Row>> {
         const rows:Array<React.ReactElement<Row>> = [];
@@ -43,7 +46,13 @@ export default class BoardComponent extends Component<IProps, IState> {
         };
     }
 
-    public componentWillUpdate(props) {
+    public componentWillUpdate(props:IProps) {
+        console.log(props.game.status)
+        if (props.game.status === GAME_PENDING) {
+            this.tilesElements = [];
+            return;    
+        }
+
         const tc:ITileCollection = props.tileCollection || [];
         const isNotFindTiles:boolean = !this.tilesElements.length;
         for (let i:number = 0; i < tc.length; i++) {
@@ -75,6 +84,9 @@ export default class BoardComponent extends Component<IProps, IState> {
             <div id="board" style={this.style}>
                 {this.rows}
                 {this.tilesElements}
+                <EndGameOverlay 
+                    startNewGame={this.props.startNewGame} 
+                    game={this.props.game}/>
             </div>
         );
     }

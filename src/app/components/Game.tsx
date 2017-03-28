@@ -27,8 +27,8 @@ interface IProps {
     scores:IScoresState;
     tileCollection:ITileCollection;
     startNewGame:Function;
+    pendingGame:Function;
     moveTiles:Function;
-    createNewTile:Function;
 }
 interface IState {}
 
@@ -89,9 +89,8 @@ export default class GameComponent extends Component<IProps, IState> {
             this.isMoving = true;
             const direction:string = this.getDirection(e.clientX, e.clientY);
             if (!direction || this.tilesAnimating) return this.isMoving = false;
+            
             await this.props.moveTiles(direction);
-            await sleep(TILE_TRANSITION_DURATION + 100);
-            await this.props.createNewTile();
             this.lastPositionX = null;
             this.lastPositionY = null;
             this.isMoving = false;
@@ -114,20 +113,28 @@ export default class GameComponent extends Component<IProps, IState> {
         });
     }
 
+    @autobind
+    public async resetGame() {
+        this.props.pendingGame();
+        await sleep(1);
+        this.props.startNewGame();
+    }
+
     public render() {
         return (
             <section id="game">
                 <div id="gameWrapper">
                     <div id="gameHeader">
-                        <NewGameButton startNewGame={this.props.startNewGame}>Новая игра</NewGameButton>
+                        <NewGameButton startNewGame={this.resetGame}>Новая игра</NewGameButton>
                         <div id="gameScores">
                             <Scoresheet value={this.props.scores.value}>Очки</Scoresheet>
                             {window.localStorage ? <Scoresheet value={this.maxScores}>Лучший результат</Scoresheet> : null}
                         </div>
                     </div>
-                    <Board 
+                    <Board
+                        game={this.props.game}
                         tileCollection={this.props.tileCollection}
-                        startNewGame={this.props.startNewGame}/>
+                        startNewGame={this.resetGame}/>
                 </div>  
             </section>
         );

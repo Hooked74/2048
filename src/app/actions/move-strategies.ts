@@ -4,9 +4,14 @@ import {
     ITileRow
 } from '../interfaces';
 
+import {
+    TILE_MAX_VALUE
+} from '../constants';
+
 const moveStrategies = {
     moveTilesToLeft(tc:ITileCollection) { // Двигаем плитки справа налево
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
+        let isWinGame:boolean = false; // проверяет набрал ли игрок 2048
         let scores = 0; // подсчитываем очки объединенных плиток
         for (let i:number = 0; i < tc.length; i++) { // идем по строкам матрицы сверху вних
             let concatenated = false; // если мы соединили 2 плитки, то не присоединять к ним следующею
@@ -43,17 +48,22 @@ const moveStrategies = {
                 }
             }
             // соединяем строку плиток с пустыми плитками и упорядочиваем их координаты
-            row = row.concat(emptyTiles).map((t:ITile, j:number):ITile => ({
-                ...t, 
-                top: tc[i][j].top, 
-                left: tc[i][j].left
-            }));
+            row = row.concat(emptyTiles).map((t:ITile, j:number):ITile => {
+                const newTile:ITile = {
+                    ...t, 
+                    top: tc[i][j].top, 
+                    left: tc[i][j].left
+                };
+                if (!isWinGame) isWinGame = newTile.value === TILE_MAX_VALUE;
+                return newTile;
+            });
             newTC.push(row);
         }
-        return { tileCollection: newTC, scores };
+        return { tileCollection: newTC, scores, isWinGame };
     },
     moveTilesToRight(tc:ITileCollection) { // Двигаем плитки слева направо
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
+        let isWinGame:boolean = false; // проверяет набрал ли игрок 2048
         let scores = 0; // подсчитываем очки объединенных плиток
         for (let i:number = 0; i < tc.length; i++) { // идем по строкам матрицы сверху вних
             let concatenated = false; // если мы соединили 2 плитки, то не присоединять к ним следующею
@@ -89,17 +99,22 @@ const moveStrategies = {
                 }
             }
             // соединяем пустые плитки со строкой плиток и упорядочиваем их координаты
-            row = emptyTiles.concat(row).map((t:ITile, j:number):ITile => ({
-                ...t, 
-                top: tc[i][j].top, 
-                left: tc[i][j].left
-            }));
+            row = emptyTiles.concat(row).map((t:ITile, j:number):ITile => {
+                const newTile:ITile = {
+                    ...t, 
+                    top: tc[i][j].top, 
+                    left: tc[i][j].left
+                };
+                if (!isWinGame) isWinGame = newTile.value === TILE_MAX_VALUE;
+                return newTile;
+            });
             newTC.push(row);
         }
-        return { tileCollection: newTC, scores };
+        return { tileCollection: newTC, scores, isWinGame };
     },
     moveTilesToTop(tc:ITileCollection) { // Двигаем плитки снизу вверх
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
+        let isWinGame:boolean = false; // проверяет набрал ли игрок 2048
         let scores = 0; // подсчитываем очки объединенных плиток
         for (let i:number = 0; i < tc.length; i++) { // идем по строкам матрицы сверху вних
             let concatenated = false; // если мы соединили 2 плитки, то не присоединять к ним следующею
@@ -143,12 +158,14 @@ const moveStrategies = {
                     top: tc[j][i].top,
                     left: tc[j][i].left
                 };
+                if (!isWinGame) isWinGame = newTC[j][i].value === TILE_MAX_VALUE;
             });
         }
-        return { tileCollection: newTC, scores };
+        return { tileCollection: newTC, scores, isWinGame };
     },
     moveTilesToBottom(tc:ITileCollection) { // Двигаем плитки сверху вниз
         const newTC:ITileCollection = []; // собираем новую коллекцию плиток
+        let isWinGame:boolean = false; // проверяет набрал ли игрок 2048
         let scores = 0; // подсчитываем очки объединенных плиток
         for (let i:number = 0; i < tc.length; i++) { // идем по строкам матрицы сверху вних
             let concatenated = false; // если мы соединили 2 плитки, то не присоединять к ним следующею
@@ -191,9 +208,10 @@ const moveStrategies = {
                     top: tc[j][i].top,
                     left: tc[j][i].left
                 };
+                if (!isWinGame) isWinGame = newTC[j][i].value === TILE_MAX_VALUE;
             });
         }
-        return { tileCollection: newTC, scores };
+        return { tileCollection: newTC, scores, isWinGame };
     }
 };
 
