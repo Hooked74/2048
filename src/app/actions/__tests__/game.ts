@@ -6,6 +6,7 @@ import { expect } from 'chai';
 import {
     START_GAME,
     FINISH_GAME,
+    PENDING_GAME,
     CLEAR_SCORES,
     UPDATE_TILES,
     CREATE_NEW_TILE
@@ -21,9 +22,9 @@ describe('GAME ACTIONS', () => {
             .then(() => {
                 const actions = store.getActions();
                 expect(actions).to.have.lengthOf(5);
-                expect(actions[0]).to.deep.equal({type: CLEAR_SCORES});
-                expect(actions[1].type).to.be.equal(UPDATE_TILES);
-                expect(actions[1]).to.have.ownProperty('payload');
+                expect(actions[0].type).to.be.equal(UPDATE_TILES);
+                expect(actions[0]).to.have.ownProperty('payload');
+                expect(actions[1]).to.deep.equal({type: CLEAR_SCORES});
                 expect(actions[2].type).to.be.equal(CREATE_NEW_TILE);
                 expect(actions[3].type).to.be.equal(CREATE_NEW_TILE);
                 expect(actions[2].payload).to.have.all.keys(['column', 'row', 'value']);
@@ -32,9 +33,16 @@ describe('GAME ACTIONS', () => {
             }); 
     });
 
+    it('Должен создать action, который поставит игру в ожидание', () => {
+        expect(gameActions.pendingGame()).to.deep.equal({
+            type: PENDING_GAME
+        });
+    });
+
     it('Должен создать action, который завершает игру', () => {
-        expect(gameActions.finishGame()).to.deep.equal({
-            type: FINISH_GAME
+        expect(gameActions.finishGame("test")).to.deep.equal({
+            type: FINISH_GAME,
+            payload: "test"
         });
     });
 });

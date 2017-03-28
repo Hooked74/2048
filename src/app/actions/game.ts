@@ -1,6 +1,7 @@
 import {
     START_GAME,
-    FINISH_GAME    
+    FINISH_GAME,
+    PENDING_GAME   
 } from '../constants';
 import {
     IActionSuccess
@@ -15,8 +16,8 @@ import {
 
 export const startNewGame:Function = () => (dispatch:Redux.Dispatch<IActionSuccess>):Promise<any> => {
     return Promise.all([
-        dispatch(clearScores()), // очищаем очки
         dispatch(resetTiles()), // обнуляем плитки
+        dispatch(clearScores()), // очищаем очки
         // добавляем две плитки
         dispatch(createNewTile()),
         dispatch(createNewTile()),
@@ -26,6 +27,11 @@ export const startNewGame:Function = () => (dispatch:Redux.Dispatch<IActionSucce
     ]);
 };
 
-export const finishGame:Function = ():IActionSuccess => ({
-    type: FINISH_GAME
+export const pendingGame:Function = ():IActionSuccess => ({
+    type: PENDING_GAME
+});
+
+export const finishGame:Function = (message:string):IActionSuccess => ({
+    type: FINISH_GAME,
+    payload: message
 });
