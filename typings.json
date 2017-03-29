@@ -3,7 +3,6 @@
   "dependencies": {
     "chai": "registry:npm/chai#3.5.0+20160723033700",
     "core-decorators": "registry:dt/core-decorators#0.10.0+20170223151516",
-    "deep-equal": "registry:dt/deep-equal#1.0.0+20170307111145",
     "enzyme": "registry:npm/enzyme#2.2.0+20160322031343",
     "react-redux": "registry:dt/react-redux#4.4.0+20170214201550",
     "redux-devtools": "registry:dt/redux-devtools#3.0.0+20170123203653",
