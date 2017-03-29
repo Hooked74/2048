@@ -11,13 +11,12 @@ interface IProps {
 interface IState {}
 
 export default class MainContainer extends Component<IProps, IState> {
-    //<DevTools />
     public render() {
         return (
             <Provider store={this.props.store}>
                 <div>
                     <App />
-                    
+                    <DevTools />
                 </div>
             </Provider>
         );
