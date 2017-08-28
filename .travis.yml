@@ -1,19 +1,20 @@
 sudo: false
 language: node.js
 node_js:
-  - "6"
+- '6'
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 install:
-  - npm run setup
+- npm run setup
 before_script:
-  - npm test
+- npm test
 script:
-  - npm run build
-deploy: &heroku
+- npm run build
+deploy:
   provider: heroku
-  app: game-2048
+  app: sheltered-sea-41755
   on: master
-  run: "npm run server"
-  api_key: eipXqqgoRxfaB0WtyiklaUqeoQyhXVP3YLupdDnFzXne4eCaXG2xBAv55KkVZj5OMcNklfTYPHPrlhcAn4lQmy/Ul9LNCQZuUGzHHYtXCjmvXDoEK9Xnma9biWuiarO5gQ5T07Om2akTNiTul3UIqexzjMq8iOTkRZGrFd64fOmjgAje9B6hK1bWVRbsM/lpFWAWz7p29sA5y4hnscEEi1BlJSVT8EiWYmogRFlBU0tmF4PZuV7GY3Z/UkRKhQLvysFnaQ1M+cbtoMcxsah9OhVDiv2fLuDj6YS3VkEflgs2ab5OLQfqS1sasGp/66oHwyVkMN/eEpRSdiK4oE3YXMkP7ip4H8aeKw0tG03dTegKgt+Cs1tJwCPVuHJN0XLzQBcVCF3gL08ntHvqvkIkLCcTVx6sy7XCAjNH713zqCCXrBY2B5arKcUhxc0soRSqhSFmpK2C2WxSpI7UHCee4WFt7667Dp8nHp7i4A1F1qV6Bn7OF1e0LD2Nsf+shI+WqF8HnDL9w6ixHC4NaDrEIf3KGiOyJojLr22ujQg3mJTJCGv07Vdr1uTkiowYcg09e/ZX1SNuAwWWeDhF/fxMMG3ZH5vU08+A/q+IngB5npwmMRAxozwlsRyNHIZgZxbhhrXFPMGyQTLhTmDly8Jvo9KYaJVtKXUEY7U3p/pit8k=
+  run: npm run server
+  api_key:
+    secure: YfeVwvf+2xhoDlHO3sL/vQP5sY74mVBC5ryQ6rHfTfdaderE5iHxUtFGLGjklK6E1zP0GfpZcUuAQGXKxxQGrZswyTE328h8HNbNGwwJ0rr7lcr7EHWvLJjbwVUn4+vrvEJSW9vL4GacTmJQ6/fiwTJraYziZfm4JV65T8uXwVzSHKnJh3fxjtP2wmF1cFvfIT2+gbLTMqZIrImmHBx0Nk4SelDLKOOan4/Y9J/KWvXTJ6XZuQPU/O+p3lPZpT8UGRXAio0HSYPZ3YhrW6BW7nwJ3QWGd1L39DoL4uNGMT+FUxxj1StYZTiRSDVzoIBcEOhp6Qw6aFgLk5VREPN+WhjvZ1STY/vud+ALANQzjI8r38NN38bWPpsgwcZd3bZc9bnWLdDJReE24MNxDSAVgQxOVWJ9LfTQYJ8gSHx6WAtcVNG7X75AZ25Pm3rOgCjEZqsNk+SD1RZ8IP1IM0QGMhd0a8Edv3+BDiSoT8XV/XQi70moJ5/OG01dUDlISfEHGXNKWH4TUBjdBd+yezvRlTZ7yyaZf6+9LDHU1RZUIyRkTwU5/+ZV+a8fFa+vlTMWn904zOl5EGR1bUWep1TocNX2Tofs060DhsGzSjy9zAZQJc7CorRRa93MeXXqwqqY8ll9cZ+TnetbYgB8fS36QWQpp7AD7u+UmULUXnwxR7g=
