@@ -28,9 +28,14 @@ interface IConnectedOwnProps {}
 
 interface IState {}
 
+interface ICustomActionCreator extends Redux.ActionCreator<any> {
+    [key:string]:any
+}
+
 const mapStateToProps = (state:IConnectedProps):IConnectedProps => state;
 const mapDispatchToProps = (dispatch:Redux.Dispatch<any>):IConnectedDispatchProps => {
-    return bindActionCreators(Object.assign({}, actions), dispatch);
+    const actionCreators:any = Object.assign({}, actions);
+    return bindActionCreators(actionCreators, dispatch);
 };
 
 class AppContainer extends Component<IConnectedProps & IConnectedDispatchProps, IState> {
