@@ -5,6 +5,12 @@ node_js:
 cache:
   directories:
   - node_modules
+addons:
+  artifacts:
+    paths:
+    - ./build
+    - ./package.json
+    - ./server.js
 install:
 - npm run setup
 before_script:
