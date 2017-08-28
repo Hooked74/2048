@@ -47,7 +47,6 @@ export default class BoardComponent extends Component<IProps, IState> {
     }
 
     public componentWillUpdate(props:IProps) {
-        console.log(props.game.status)
         if (props.game.status === GAME_PENDING) {
             this.tilesElements = [];
             return;    
