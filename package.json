@@ -8,9 +8,12 @@
     "clear": "rm -rf build",
     "build": "npm run clear && NODE_ENV=prod webpack --progress",
     "dev": "webpack-dev-server --inline --hot --progress --modules=false",
-    "server": "PORT=80 node server.js",
+    "server": "npm i -D express && PORT=80 node server.js",
     "test": "jest",
     "test:watch": "jest --watchAll"
+  },
+  "engines": {
+    "node": "8.3.0"
   },
   "repository": {
     "type": "git",
