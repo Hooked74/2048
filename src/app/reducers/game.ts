@@ -12,7 +12,7 @@ import {
     IActionError
 } from '../interfaces';
 
-type TAction = IActionSuccess & IActionError;
+type TAction = IActionSuccess | IActionError;
 const gameInitialState:IGameState = { status: GAME_PENDING, message: '' };
 export const game:Redux.Reducer<any> = (state:IGameState = gameInitialState, action:TAction):IGameState => {
     switch (action.type) {

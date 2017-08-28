@@ -3,14 +3,14 @@ import {
     CLEAR_SCORES
 } from '../constants';
 import {
-    IScoresState​​,
+    IScoresState,
     IActionSuccess,
     IActionError
 } from '../interfaces';
 
-type TAction = IActionSuccess & IActionError;
-const scoresInitialState:IScoresState​​ = { value: 0 };
-export const scores:Redux.Reducer<any> = (state:IScoresState​​ = scoresInitialState, action:TAction):IScoresState​​ => {
+type TAction = IActionSuccess | IActionError;
+const scoresInitialState:IScoresState = { value: 0 };
+export const scores:Redux.Reducer<any> = (state:IScoresState = scoresInitialState, action:TAction):IScoresState => {
     switch (action.type) {
     case ADD_SCORES:
         const addedScores:number = Number.isFinite(action.payload) ? action.payload : 0;

@@ -1,10 +1,9 @@
-export interface IAction {
+export interface IAction extends Redux.Action {
     readonly type:string;
-}
-
-export interface IActionSuccess extends IAction {
     readonly payload?:any;
 }
+
+export interface IActionSuccess extends IAction {}
 
 export interface IActionError extends IAction {
     readonly error:Error;
