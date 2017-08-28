@@ -1,5 +1,10 @@
 sudo: false
 language: node.js
+node_js:
+  - "6"
+cache:
+  directories:
+    - "node_modules"
 install:
   - npm run setup
 before_script:

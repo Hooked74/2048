@@ -16,7 +16,7 @@ const addHash = (template, hash) => {
 };
 
 const debug = NODE_ENV === NODE_ENV_DEV;
-const host = 'localhost';
+const host = '0.0.0.0';
 const port = 9051;
 
 module.exports = {
@@ -86,7 +86,12 @@ module.exports = {
             filename: './index.html',
             template: './src/index.ejs',
             chunksSortMode: 'none',
-            chunks: ['bundle']
+            chunks: ['bundle'],
+            minify: !debug ? {
+                collapseBooleanAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+            } : false
         }),
         new webpack.optimize.DedupePlugin()
     ],
@@ -102,11 +107,16 @@ if (!debug) {
     module.exports.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
+                screw_ie8: true,
                 warnings: false,
                 dead_code: true,
                 drop_debugger: true
             },
+            mangle: {
+                screw_ie8: true
+            },
             output: {
+                screw_ie8: true,
                 comments: false
             } 
         })
