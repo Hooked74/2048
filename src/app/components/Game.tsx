@@ -5,7 +5,8 @@ import { autobind } from 'core-decorators';
 import {
     GAME_STARTED,
     TILE_CLASS,
-    TILE_TRANSITION_DURATION
+    TILE_TRANSITION_DURATION,
+    ArrowKeys
 } from '../constants';
 
 import {
@@ -82,12 +83,17 @@ export default class GameComponent extends Component<IProps, IState> {
 
     @autobind
     private async handleMoveTiles(e) {
-        if (!this.isMoving) {
-            if (this.lastPositionX === null) this.lastPositionX = e.clientX;
-            if (this.lastPositionY === null) this.lastPositionY = e.clientY;
-
+        if (!this.isMoving && e) {
             this.isMoving = true;
-            const direction:string = this.getDirection(e.clientX, e.clientY);
+            let direction:string = e;
+
+            if (typeof e !== "string") {
+                if (this.lastPositionX === null) this.lastPositionX = e.clientX;
+                if (this.lastPositionY === null) this.lastPositionY = e.clientY;
+                
+                direction = this.getDirection(e.clientX, e.clientY);
+            }
+
             if (!direction || this.tilesAnimating) return this.isMoving = false;
             
             await this.props.moveTiles(direction);
@@ -100,6 +106,13 @@ export default class GameComponent extends Component<IProps, IState> {
     public componentDidMount() {
         this.props.startNewGame();
 
+        document.addEventListener("keydown", e => {
+            let direction:string = ArrowKeys[e.keyCode];
+            if (direction) {
+                this.handleMoveTiles(direction.toLowerCase());
+            }
+        }, false)
+
         document.addEventListener("mousedown", e => {
             if (this.props.game.status === GAME_STARTED) {
                 e.preventDefault();
@@ -110,7 +123,7 @@ export default class GameComponent extends Component<IProps, IState> {
         }, false);
         document.addEventListener("mouseup", () => {
             document.removeEventListener("mousemove", this.handleMoveTiles, false);
-        });
+        }, false);
     }
 
     @autobind
