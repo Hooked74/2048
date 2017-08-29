@@ -1,18 +1,7 @@
-# 2048
+2048
+===============
+See [demo](https://polar-fjord-72196.herokuapp.com/)
 
-Game 2048.
-
-## Install
-
-To set all dependencies, use the command `npm run setup`.
-
-To start the server, use the command `npm run server` or `npm run server:prod`.
-
-Use the command `npm run deploy` or `npm run deploy:prod` to get the build.
-
-
-## Testing
-
-For testing, use the command `npm test`.
-
-If you want to use an watcher - `npm run test:watch`.
+1. Install dependencies &nbsp; `$ npm run setup`
+2. Run &nbsp; `$ npm run dev`
+3. Open **[http]://[ip]:9051**
